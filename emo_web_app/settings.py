@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'account.User'
 
 LOCAL_APPS = [
-    "account", "product",
+    "account", "product", "api",
     # "booking", "portifolio", "stock",
 ]
 
