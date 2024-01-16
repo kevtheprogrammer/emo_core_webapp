@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 AUTH_USER_MODEL = 'account.User'
 
@@ -37,6 +38,8 @@ LOCAL_APPS = [
 THIRD_PARTY_APPS = [
     'django_countries',
     'phonenumber_field',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 INSTALLED_APPS += LOCAL_APPS
@@ -51,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+
 ]
 
 ROOT_URLCONF = 'emo_web_app.urls'
@@ -103,7 +108,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 

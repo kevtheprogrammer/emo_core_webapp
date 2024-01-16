@@ -1,9 +1,13 @@
+from django.shortcuts import redirect, render
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import User
 from .serializers import UserListSerializer
+from .forms import CustomSignupForm
+from allauth.account.views import SignupView
+from .forms import SignUpForm
 
 class UserListView(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('date_joined')
@@ -19,3 +23,6 @@ class UserDetailView(APIView):
 
         serializer = UserListSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
