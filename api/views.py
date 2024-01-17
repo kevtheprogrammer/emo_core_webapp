@@ -14,7 +14,7 @@ from product.serializers import *
 from django.shortcuts import get_object_or_404
 # viewsets endepoins for the apis
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -59,3 +59,6 @@ class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
+class VehicleViewSet(viewsets.ModelViewSet):
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer

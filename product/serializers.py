@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Category, Tag, Color, Size, City, Province, PropertyRequst, Review
+from .models import Product, Category, Tag, Color, Size, City, Province, PropertyRequst, Review, Vehicle
 
 
 
@@ -13,7 +13,7 @@ class ProductSerializer(serializers.ModelSerializer):
     # category = CategorySerializer()
     class Meta:
         model = Product
-        fields = ['name', 'description','price','discount','is_pub','favourite', 'category','author']
+        fields = ['name', 'description','price','discount','favourite', 'category','author']
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -49,3 +49,9 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+
+class VehicleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicle
+        fields = ['make', 'vehicle_name', 'holder', 'vehicle_id', 'fuel_type', 'price',
+                  'color', 'description', 'city', 'province', 'tag', 'category','status']

@@ -43,7 +43,7 @@
 #     search_fields = ( 'title', )
 
 from django.contrib import admin
-from .models import Category, Tag, Color, Size, City, Province, Product, PropertyRequst, Review
+from .models import Category, Tag, Color, Size, City, Province, Product, PropertyRequst, Review, Vehicle
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -89,3 +89,11 @@ class PropertyRequstAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'product', 'created', 'updated']
     # Add other configurations if needed
+
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ('make', 'vehicle_name', 'holder', 'vehicle_id', 'fuel_type', 'price', 'description', 'city', 'province', 'tag', 'category', 'status', 'timestamp', 'updated')
+    search_fields = ('make', 'vehicle_name', 'vehicle_id')
+    list_filter = ('category', 'status', 'city', 'province', 'tag')
+    readonly_fields = ('timestamp', 'updated')
+
+admin.site.register(Vehicle, VehicleAdmin)
