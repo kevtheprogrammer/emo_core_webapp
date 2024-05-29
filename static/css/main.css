@@ -1244,7 +1244,7 @@ input::-moz-focus-inner {
 }
 
 .home-logo img {
-  width: 120px;
+  width: 70px;
   /* height: 25px; */
 }
 
@@ -1978,8 +1978,8 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-logo img {
-    width: 95px;
-    height: 24px;
+    width: 50px;
+    /* height: 24px; */
   }
 
   .home-content h1 {
