@@ -13,7 +13,7 @@
         <div class="home-content">
 
             <div style='top: 15px;' class="home-logo">
-                <a href="index.html">
+                <a href="{% url 'homepage' %}">
                     <img style="width:70px;" src="{% static 'images/logo.png' %}" alt="Homepage" />
                 </a>
             </div>
@@ -28,7 +28,7 @@
                         <!-- on a new super awesome <br> apllicatiyon. -->
                     </h1>
 
-                    <p>
+                    <p style="color: hsl(48.43,89.56%,48.82%);">
                         EMO: " The all-in-one super app connecting you locally. "
                     </p>
 
@@ -71,16 +71,16 @@
 
             <ul class="home-social">
                 <li>
-                    <a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
+                    <a href="https://www.facebook.com/EMOZambia/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
                 </li>
                 <!-- <li>
                     <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
                 </li> -->
-                <li>
+                <!-- <li>
                     <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-                </li>
+                </li> -->
                 <li>
-                    <a href="https://www.linkedin.com/company/emo-zambia "><i class="fab fa-linkedin"
+                    <a href="https://www.linkedin.com/company/emo-zambia " target="_blank"><i class="fab fa-linkedin"
                             aria-hidden="true"></i><span>Linkedin</span></a>
                 </li>
                 <!-- <li>
@@ -109,20 +109,20 @@
 
     <div class="s-info">
         <div style='top:25px' class="home-logo">
-            <a href="index.html">
+            <a href="{% url 'homepage' %}">
                 <img style='width:70px;'  src="{% static 'images/logo.png' %}" alt="Homepage"  />
             </a>
         </div>
         <div class="row info-wrapper">
 
             <div class="col-seven tab-full info-main">
-                <h1>The Super App
+                <h1>The All-In-One
                     <!-- <br> -->
-                    Connecting You
+                    Supper App
                     <br>
-                    All-in-One Super App
+                    Connecting You!
                 </h1>
-                <p>
+                <p style="color: hsl(48.43,89.56%,48.82%);">
                     Get ready for EMO, the ultimate super app designed to revolutionize the way you connect with
                     local services, businesses, events, and job opportunities in Zambia.
                     It will be available on Web, iOS and Android mobile devices.
@@ -158,23 +158,23 @@
 
                     <ul class="info-social">
                         <li>
-                            <a href="#0"><i class="fab fa-facebook" aria-hidden="true"></i>
+                            <a href="https://www.facebook.com/EMOZambia/" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i>
                                 <span>Facebook</span></a>
                         </li>
                         <!-- <li>
                             <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i>
                                 <span>Twiiter</span></a>
                         </li> -->
-                        <li>
+                        <!-- <li>
                             <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i>
                                 <span>Instagram</span></a>
-                        </li>
+                        </li> -->
                         <!-- <li>
                             <a href="#0"><i class="fab fa-behance" aria-hidden="true"></i>
                                 <span>Behance</span></a>
                         </li> -->
                         <li>
-                            <a href="https://www.linkedin.com/company/emo-zambia"><i class="fab fa-linkedin"
+                            <a href="https://www.linkedin.com/company/emo-zambia" target="_blank"><i class="fab fa-linkedin"
                                     aria-hidden="true"></i>
                                 <span>Linkedin</span></a>
                         </li>
