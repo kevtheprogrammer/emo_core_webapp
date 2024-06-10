@@ -1,43 +1,57 @@
-# from django.contrib import admin
+from django.contrib import admin
+from .models import Category, Tag, Color, Size, City, Province, Product, PropertyRequest, Review
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'timestamp', 'updated')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
 
-# from .models import *
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('title', 'timestamp', 'updated')
+    search_fields = ('title',)
 
-# @admin.register(Category)
-# class CategoryAdmin(admin.ModelAdmin):
-#     list_display = ( 'title', 'updated', )
-#     search_fields = ( 'title', )
+@admin.register(Color)
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color_code', 'timestamp', 'updated')
+    search_fields = ('name', 'color_code')
 
+@admin.register(Size)
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'timestamp', 'updated')
+    search_fields = ('name',)
 
-# @admin.register(Product)
-# class ProductAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'price', 'discount','description',  )
-#     search_fields = ('name', 'price', 'description' ,)
-#     list_filter = ('category', 'author__email','price','updated',)
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'timestamp', 'updated')
+    search_fields = ('name',)
 
+@admin.register(Province)
+class ProvinceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'timestamp', 'updated')
+    search_fields = ('name',)
+    filter_horizontal = ('cities',)
 
-#     actions = [ 'publish', 'draft' ]
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'discount', 'category', 'seller', 'is_pub', 'timestamp', 'updated')
+    search_fields = ('name', 'description', 'category__title', 'seller__username')
+    list_filter = ('category', 'is_pub', 'timestamp', 'updated')
+    prepopulated_fields = {'slug': ('name',)}
+    filter_horizontal = ('tags', 'colors', 'favourite')
 
-#     def publish(self, queryset):
-#         queryset.update(is_pub=True)
+@admin.register(PropertyRequest)
+class PropertyRequestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'cat', 'is_pub', 'is_available', 'timestamp', 'updated')
+    search_fields = ('name', 'description', 'cat__title', 'customer__username')
+    list_filter = ('cat', 'is_pub', 'is_available', 'timestamp', 'updated')
+    prepopulated_fields = {'slug': ('name',)}
+    filter_horizontal = ('colors',)
 
-#     def draft(self, queryset):
-#         queryset.update(is_pub=False)
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'product', 'created', 'updated')
+    search_fields = ('name', 'email', 'product__name', 'body')
+    list_filter = ('created', 'updated')
 
-
-# @admin.register(Region)
-# class RegionAdmin(admin.ModelAdmin):
-#     list_display = ( 'name', )
-#     list_filter = ('updated',)
-
-
-# # @admin.register(Order)
-# # class OrderAdmin(admin.ModelAdmin):
-# #     list_display = ( 'status', 'client','ordered','shipping_fee', )
-# #     search_fields = ( 'client.email', )
-# #     list_filter = ('updated','status')
-
-# @admin.register(Tag)
-# class TagAdmin(admin.ModelAdmin):
-#     list_display = ( 'title', 'timestamp', )
-#     search_fields = ( 'title', )

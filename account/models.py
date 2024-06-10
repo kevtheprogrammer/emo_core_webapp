@@ -8,6 +8,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.urls import reverse
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
+import uuid
 
 from .managers import UserManager
 
@@ -15,29 +16,22 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     email = models.EmailField(verbose_name='email address', unique=True)
-    email_confirmed = models.BooleanField(
-        verbose_name='email confirmed', default=False)
-    access_code = models.UUIDField(default=None, blank=True, null=True)
-    first_name = models.CharField(
-        verbose_name='first name', max_length=30, blank=True)
-    last_name = models.CharField(
-        verbose_name='last name', max_length=30, blank=True)
-    dob = models.DateField(auto_now=True, blank=True)
-    nrc = models.CharField(
-        verbose_name='national registration number', max_length=300, blank=True)
+    email_confirmed = models.BooleanField(verbose_name='email confirmed', default=False)
+    access_code = models.UUIDField(default=uuid.uuid4, editable=False)
+    first_name = models.CharField(verbose_name='first name', max_length=30, blank=True)
+    last_name = models.CharField(verbose_name='last name', max_length=30, blank=True)
+    dob = models.DateField(blank=True, null=True)
+    nrc = models.CharField(verbose_name='national registration number', max_length=300, blank=True)
     country = CountryField(blank_label='(select country)', blank=True)
     phone = PhoneNumberField(blank=True)
     is_staff = models.BooleanField(verbose_name='staff', default=False)
-    location = models.CharField(
-        verbose_name='location', max_length=50, blank=True)
-    date_joined = models.DateTimeField(
-        verbose_name='date joined', auto_now_add=True)
+    location = models.CharField(verbose_name='location', max_length=50, blank=True)
+    date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     is_active = models.BooleanField(verbose_name='active', default=True)
     is_verified = models.BooleanField(verbose_name='verified', default=False)
-    creation_ip_address = models.CharField(
-        max_length=24, default=None, blank=True, null=True)
-    deletion_ip_address = models.CharField(
-        max_length=24, default=None, blank=True, null=True)
+    creation_ip_address = models.CharField(max_length=24, default=None, blank=True, null=True)
+    deletion_ip_address = models.CharField(max_length=24, default=None, blank=True, null=True)
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -64,8 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         Sends an email to this User.
         '''
-        print(subject, message, from_email,)
-        # send_mail(subject, message, from_email, [self.email], **kwargs)
+        send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def get_absolute_url(self):
         return reverse('account:profile', args=[self.pk])
