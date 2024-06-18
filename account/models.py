@@ -14,6 +14,7 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     email = models.EmailField(verbose_name='email address', unique=True)
     email_confirmed = models.BooleanField(verbose_name='email confirmed', default=False)
@@ -65,3 +66,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_update_url(self):
         return reverse('account:profile-edit', args=[self.pk])
+    

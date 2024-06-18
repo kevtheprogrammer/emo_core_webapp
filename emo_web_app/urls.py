@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('', include('portifolio.urls')),
+    path('api/', include('apis.urls')),
     path('account/', include('account.urls')),
     path('booking/', include('booking.urls')),
 

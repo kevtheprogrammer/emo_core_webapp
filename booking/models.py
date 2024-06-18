@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Events(models.Model):
+    
     title = models.CharField(max_length=700)
     startdate = models.DateTimeField()
     enddate = models.DateTimeField()
@@ -14,3 +15,6 @@ class Events(models.Model):
     location = models.CharField(max_length=700)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
